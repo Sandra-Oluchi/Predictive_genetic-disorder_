@@ -43,6 +43,67 @@ The project uses a reproducible Python workflow. The data preparation module sta
 
 The original notebook remains available in the repository for reviewers who want to see the exploratory analysis, charts, and modeling process in notebook form.
 
+## Model Results
+
+### Patient Status Prediction
+
+The patient-status model was evaluated on `1,397` test patients.
+
+| Model | Accuracy | Correct Predictions | Wrong Predictions | Macro F1 | Weighted F1 |
+|---|---:|---:|---:|---:|---:|
+| Support Vector Machine | 91.84% | 1,283 / 1,397 | 114 / 1,397 | 91.55% | 91.88% |
+| Random Forest | 100.00% | 1,397 / 1,397 | 0 / 1,397 | 100.00% | 100.00% |
+| Decision Tree | 100.00% | 1,397 / 1,397 | 0 / 1,397 | 100.00% | 100.00% |
+
+Confusion matrix label order: `Alive`, `Deceased`
+
+```text
+Support Vector Machine
+[[771,  75],
+ [ 39, 512]]
+
+Random Forest
+[[846,   0],
+ [  0, 551]]
+
+Decision Tree
+[[846,   0],
+ [  0, 551]]
+```
+
+For the SVM model, `771` Alive patients and `512` Deceased patients were classified correctly. It misclassified `75` Alive patients as Deceased and `39` Deceased patients as Alive.
+
+### Genetic Disorder Type Prediction
+
+The genetic-disorder type model was evaluated on `1,397` test patients.
+
+| Model | Accuracy | Correct Predictions | Wrong Predictions | Macro F1 | Weighted F1 |
+|---|---:|---:|---:|---:|---:|
+| Support Vector Machine | 47.03% | 657 / 1,397 | 740 / 1,397 | 46.43% | 47.03% |
+| Random Forest | 48.75% | 681 / 1,397 | 716 / 1,397 | 47.26% | 48.74% |
+| Decision Tree | 47.03% | 657 / 1,397 | 740 / 1,397 | 45.15% | 47.87% |
+
+Confusion matrix label order: `Mitochondrial genetic inheritance disorders`, `Multifactorial genetic inheritance disorders`, `Single-gene inheritance diseases`
+
+```text
+Support Vector Machine
+[[351, 103, 263],
+ [ 12, 127,   8],
+ [204, 150, 179]]
+
+Random Forest
+[[384, 107, 226],
+ [ 16, 118,  13],
+ [221, 133, 179]]
+
+Decision Tree
+[[336, 111, 270],
+ [ 28,  91,  28],
+ [186, 117, 230]]
+```
+
+The best model for genetic disorder type was Random Forest, with `48.75%` accuracy and `681` correct predictions out of `1,397` test cases.
+
 ## Health Impact
 
 Predictive modeling in genetics can support earlier identification of high-risk patient patterns when used responsibly. A validated workflow could help care teams prioritize follow-up, identify patients who may benefit from genetic counseling, and organize complex clinical information for review.
@@ -54,6 +115,8 @@ Potential health and operational value includes:
 - Support for genetic counseling and family-history review.
 - Improved awareness of missing or inconsistent clinical data.
 - A foundation for decision-support tools that assist, but do not replace, clinicians.
+
+Quantitatively, the patient-status model using SVM correctly classified about `92 out of every 100` patients. Random Forest and Decision Tree reached `100%` on the test split, which is strong but should be interpreted cautiously because perfect healthcare-model performance can indicate possible target leakage or highly predictive variables. For genetic disorder type, the best model correctly classified about `49 out of every 100` patients, making it a useful baseline for exploration but not strong enough for clinical use.
 
 This project is educational and should not be used for clinical diagnosis, treatment, or medical decision-making. Real clinical use would require validation, privacy review, fairness testing, model monitoring, and oversight from qualified healthcare professionals.
 

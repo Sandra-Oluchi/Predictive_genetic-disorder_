@@ -28,6 +28,46 @@ The raw patient-level dataset is not published, but the repository includes aggr
 
 ![Patient age distribution](reports/figures/patient_age_distribution.png)
 
+## Model Results
+
+### Patient Status Prediction
+
+Test set size: `1,397` patients
+
+| Model | Accuracy | Correct Predictions | Wrong Predictions | Weighted F1 |
+|---|---:|---:|---:|---:|
+| Support Vector Machine | 91.84% | 1,283 / 1,397 | 114 / 1,397 | 91.88% |
+| Random Forest | 100.00% | 1,397 / 1,397 | 0 / 1,397 | 100.00% |
+| Decision Tree | 100.00% | 1,397 / 1,397 | 0 / 1,397 | 100.00% |
+
+Confusion matrix label order: `Alive`, `Deceased`
+
+```text
+Support Vector Machine
+[[771,  75],
+ [ 39, 512]]
+
+Random Forest
+[[846,   0],
+ [  0, 551]]
+
+Decision Tree
+[[846,   0],
+ [  0, 551]]
+```
+
+### Genetic Disorder Type Prediction
+
+Test set size: `1,397` patients
+
+| Model | Accuracy | Correct Predictions | Wrong Predictions | Weighted F1 |
+|---|---:|---:|---:|---:|
+| Support Vector Machine | 47.03% | 657 / 1,397 | 740 / 1,397 | 47.03% |
+| Random Forest | 48.75% | 681 / 1,397 | 716 / 1,397 | 48.74% |
+| Decision Tree | 47.03% | 657 / 1,397 | 740 / 1,397 | 47.87% |
+
+The best model for genetic disorder type was Random Forest, correctly classifying `681` of `1,397` test cases.
+
 ## Health Impact
 
 Genetic disorder prediction models can support earlier identification of high-risk patient patterns, help health teams prioritize follow-up, and improve the way clinical data is organized for review. In a real healthcare setting, a validated model like this could help flag cases for genetic counseling, additional screening, or closer clinical monitoring.
