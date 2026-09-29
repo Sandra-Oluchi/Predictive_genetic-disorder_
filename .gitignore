@@ -21,6 +21,7 @@ reports/*
 !reports/figures/
 reports/figures/*
 !reports/figures/.gitkeep
+!reports/figures/*.png
 
 # Local/raw datasets
 data/raw/*

@@ -10,9 +10,23 @@ The project compares:
 
 By default, the training script predicts patient `status`. The same workflow can also be pointed at another available target column, such as `genetic_disorder`.
 
-## Project Write-Up
+## Access The Code
 
-See [PROJECT_WRITEUP.md](PROJECT_WRITEUP.md) for the full project explanation, health impact, methodology, limitations, and complete code appendix.
+- Original notebook: [notebooks/Final_Project_Genetic_Disorder_task_1.ipynb](notebooks/Final_Project_Genetic_Disorder_task_1.ipynb)
+- Data cleaning module: [src/genetic_disorder_ml/data.py](src/genetic_disorder_ml/data.py)
+- Model training module: [src/genetic_disorder_ml/train.py](src/genetic_disorder_ml/train.py)
+- Training script: [scripts/train_model.py](scripts/train_model.py)
+- Full project write-up: [PROJECT_WRITEUP.md](PROJECT_WRITEUP.md)
+
+## Visualizations
+
+The raw patient-level dataset is not published, but the repository includes aggregate visualizations:
+
+![Patient status distribution](reports/figures/patient_status_distribution.png)
+
+![Genetic disorder category distribution](reports/figures/genetic_disorder_distribution.png)
+
+![Patient age distribution](reports/figures/patient_age_distribution.png)
 
 ## Health Impact
 
@@ -38,6 +52,9 @@ scripts/
 models/
 reports/
   figures/
+    genetic_disorder_distribution.png
+    patient_age_distribution.png
+    patient_status_distribution.png
 requirements.txt
 README.md
 PROJECT_WRITEUP.md
