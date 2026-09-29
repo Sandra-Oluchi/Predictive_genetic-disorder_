@@ -68,6 +68,14 @@ Test set size: `1,397` patients
 
 The best model for genetic disorder type was Random Forest, correctly classifying `681` of `1,397` test cases.
 
+## False Positives And False Negatives
+
+For patient-status prediction, false negatives are especially important because they represent patients who were actually `Deceased` but predicted as `Alive`. In the SVM model, this happened in `39` cases. In a healthcare workflow, this kind of error could reduce urgency for patients who may need closer review.
+
+False positives are also important because they represent patients who were actually `Alive` but predicted as `Deceased`. In the SVM model, this happened in `75` cases. This could lead to unnecessary concern, additional review, or inefficient use of clinical resources.
+
+For genetic-disorder type prediction, false positives and false negatives mean the model assigned patients to the wrong disorder category. This matters because different genetic disorder groups may require different follow-up, counseling, monitoring, or specialist review. The disorder-type model had moderate performance, so it should be treated as an exploratory baseline rather than a clinical decision tool.
+
 ## Health Impact
 
 Genetic disorder prediction models can support earlier identification of high-risk patient patterns, help health teams prioritize follow-up, and improve the way clinical data is organized for review. In a real healthcare setting, a validated model like this could help flag cases for genetic counseling, additional screening, or closer clinical monitoring.

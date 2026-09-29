@@ -104,6 +104,18 @@ Decision Tree
 
 The best model for genetic disorder type was Random Forest, with `48.75%` accuracy and `681` correct predictions out of `1,397` test cases.
 
+## Model Interpretation: False Positives And False Negatives
+
+For patient-status prediction, false positives and false negatives have different practical meanings.
+
+A false positive occurs when the model predicts `Deceased` for a patient who is actually `Alive`. In the SVM model, there were `75` false positives. In a healthcare workflow, this could create unnecessary concern, extra clinical review, or inefficient use of follow-up resources.
+
+A false negative occurs when the model predicts `Alive` for a patient who is actually `Deceased`. In the SVM model, there were `39` false negatives. This is especially important because it represents missed high-risk cases. If a similar error happened in a real decision-support workflow, it could reduce the urgency given to patients who may need closer review.
+
+For this reason, accuracy alone is not enough. Recall for the higher-risk class is important because the cost of missing a serious outcome may be greater than the cost of flagging an extra patient for review. Precision is also important because too many false alerts can create alert fatigue and waste limited clinical resources.
+
+For genetic-disorder type prediction, false positives and false negatives mean the model placed patients into the wrong disorder category. This matters because different disorder groups may require different genetic counseling, screening, monitoring, or specialist referral pathways. Since the best disorder-type model only reached `48.75%` accuracy, it should be interpreted as an exploratory baseline, not as a reliable clinical classifier.
+
 ## Health Impact
 
 Predictive modeling in genetics can support earlier identification of high-risk patient patterns when used responsibly. A validated workflow could help care teams prioritize follow-up, identify patients who may benefit from genetic counseling, and organize complex clinical information for review.
