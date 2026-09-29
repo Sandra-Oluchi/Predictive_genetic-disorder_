@@ -1,14 +1,24 @@
-# Genetic Disorder Machine Learning Project
+# Predictive Genetic Disorder Model
 
-This project organizes the final genetic disorder machine learning notebook into a clean, reproducible GitHub repository format.
+This repository contains a reproducible machine learning project for analyzing a clinical genetics dataset and training predictive classification models. The workflow cleans the data, removes direct identifiers, builds preprocessing pipelines, handles class imbalance, trains multiple supervised models, and saves the best-performing model and metrics locally.
 
-The original notebook analyzes a genetic disorder dataset, performs data cleaning and exploratory analysis, balances the target classes with random undersampling, and compares supervised classification models:
+The project compares:
 
 - Support Vector Machine
 - Random Forest Classifier
 - Decision Tree Classifier
 
-By default, the training script mirrors the notebook target and predicts patient `status`. You can also train against another label, such as `genetic_disorder`.
+By default, the training script predicts patient `status`. The same workflow can also be pointed at another available target column, such as `genetic_disorder`.
+
+## Project Write-Up
+
+See [PROJECT_WRITEUP.md](PROJECT_WRITEUP.md) for the full project explanation, health impact, methodology, limitations, and complete code appendix.
+
+## Health Impact
+
+Genetic disorder prediction models can support earlier identification of high-risk patient patterns, help health teams prioritize follow-up, and improve the way clinical data is organized for review. In a real healthcare setting, a validated model like this could help flag cases for genetic counseling, additional screening, or closer clinical monitoring.
+
+This project is educational and should not be used for clinical diagnosis, treatment, or medical decision-making. Any real-world use would require clinical validation, bias testing, privacy review, model monitoring, and approval by qualified healthcare professionals.
 
 ## Project Structure
 
@@ -30,6 +40,7 @@ reports/
   figures/
 requirements.txt
 README.md
+PROJECT_WRITEUP.md
 ```
 
 ## Setup
@@ -38,6 +49,14 @@ README.md
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
+
+## Dataset
+
+The raw dataset is not committed because it can contain sensitive patient-level attributes and identifiers. To run the project locally, place your authorized copy at:
+
+```text
+data/raw/Genetic_disorder.csv
 ```
 
 ## Train Models
@@ -54,21 +73,9 @@ Train a specific target:
 python scripts/train_model.py --target genetic_disorder
 ```
 
-Outputs are written to:
+Outputs are written locally to:
 
 - `models/best_model.joblib`
 - `reports/metrics.json`
 
-## Dataset
-
-The raw dataset is not committed because it can contain sensitive patient-level attributes and identifiers. To run the project locally, place your authorized copy at:
-
-```text
-data/raw/Genetic_disorder.csv
-```
-
-The training code expects a clinical genetics CSV with patient demographics, genetic history, clinical observations, symptoms, test values, and disorder labels.
-
-## Notes
-
-This project is for educational machine learning practice only. It should not be used for clinical diagnosis or medical decision-making.
+These generated files are ignored by Git.
